@@ -25,7 +25,7 @@ export default function Home() {
      }
 
      const validate = () => {
-         let newErrors = {email: "", password: ""};
+         const newErrors = {email: "", password: ""};
          let isValid = true;
 
          if (!/\S+@\S+\.\S+/.test(formData.email)) {

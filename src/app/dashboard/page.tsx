@@ -37,7 +37,7 @@ const sampleData: Application[] = [
 export default function DashboardPage() {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState("ALL");
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
 
   const filteredData = sampleData.filter((app) => {
     const matchesSearch = app.name.toLowerCase().includes(search.toLowerCase()) || app.email.toLowerCase().includes(search.toLowerCase());
@@ -47,28 +47,6 @@ export default function DashboardPage() {
     return matchesSearch && matchesStatus;
   });
 
-  // ✅ Vérifie si tout est sélectionné
-  const allSelected =
-    filteredData.length > 0 &&
-    filteredData.every((app) => selectedIds.includes(app.id));
-
-  // ✅ Toggle "select all"
-  const toggleSelectAll = () => {
-    if (allSelected) {
-      setSelectedIds([]);
-    } else {
-      setSelectedIds(filteredData.map((app) => app.id));
-    }
-  };
-
-  // ✅ Toggle une seule candidature
-  const toggleSelect = (id: string) => {
-    if (selectedIds.includes(id)) {
-      setSelectedIds(selectedIds.filter((x) => x !== id));
-    } else {
-      setSelectedIds([...selectedIds, id]);
-    }
-  };
 
   return (
     <div className="text-white ">
