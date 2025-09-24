@@ -16,7 +16,7 @@ export default function DashboardLayout({
         <Header />
 
         {/* Page content */}
-        <main className="flex-1 p-6 ">{children}</main>
+        <main className="flex-1 p-6 bg-slate-950">{children}</main>
       </div>
     </div>
   );

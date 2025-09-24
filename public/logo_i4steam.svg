@@ -1,0 +1,42 @@
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background for visibility -->
+  <rect width="240" height="60" fill="#111827" rx="8"/>
+  
+  <defs>
+    <!-- Gradient for the arrow -->
+    <linearGradient id="arrowGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <style>
+    .steam-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+  </style>
+  
+  <!-- Stylized 'A' (arrow) with gradient and glow -->
+  <path d="M25 45 L35 20 L45 45 L40 45 L35 32 L30 45 L25 45Z" fill="url(#arrowGradient)" filter="url(#glow)"/>
+  
+  <!-- Letter 'I' -->
+  <text x="50" y="45" fill="#FFFFFF" class="steam-text">I</text>
+  
+  <!-- Number '4' -->
+  <text x="68" y="45" fill="#FBBF24" class="steam-text">4</text>
+  
+  <!-- Word 'STEAM' -->
+  <text x="95" y="45" fill="#FFFFFF" class="steam-text">STEAM</text>
+</svg>
