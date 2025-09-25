@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ApplicationFilter from "../composants/fonction";
+import ApplicationFilter from "../composants/actionMasse";
 type Application = {
   id: string;
   name: string;
@@ -39,32 +39,21 @@ export default function DashboardPage() {
   const [statusFilter, setStatusFilter] = useState("ALL");
 
 
-  const filteredData = sampleData.filter((app) => {
-    const matchesSearch = app.name.toLowerCase().includes(search.toLowerCase()) || app.email.toLowerCase().includes(search.toLowerCase());
-
-    const matchesStatus = statusFilter === "ALL" || app.status === statusFilter;
-
-    return matchesSearch && matchesStatus;
-  });
-
 
   return (
     <div className="text-white ">
-    <ApplicationFilter
-        search={search}
-        setSearch={setSearch}
-        statusFilter={statusFilter}
-        setStatusFilter={setStatusFilter}
-        onSearch={() => console.log("je suis un zombie")}
-        onShortlist={() => console.log("Shortlist")}
-        onAccept={() => console.log("Accept")}
-        onReject={() => console.log("Reject")}
-        onExportCSV={() => console.log("Export CSV")}
-      />
-     
-
-    
-      
+        <ApplicationFilter
+            search={search}
+            setSearch={setSearch}
+            statusFilter={statusFilter}
+            setStatusFilter={setStatusFilter}
+            onSearch={() => console.log("je suis un zombie")}
+            onShortlist={() => console.log("Shortlist")}
+            onAccept={() => console.log("Accept")}
+            onReject={() => console.log("Reject")}
+            onExportCSV={() => console.log("Export CSV")} onChangeStatus={function (newStatus: string): void {
+            throw new Error("Function not implemented.");
+        }} />
     </div>
   );
 }
