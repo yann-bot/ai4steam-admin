@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 import ApplicationFilter from "../composants/actionMasse";
-type Application = {
-  id: string;
-  name: string;
-  email: string;
-  status: string;
-  submittedAt: string;
-};
+//type Application = {id: string;name: string; email: string;status: string;submittedAt: string;};
 
 
 export default function DashboardPage() {
