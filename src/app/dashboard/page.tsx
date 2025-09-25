@@ -23,7 +23,7 @@ export default function DashboardPage() {
             onAccept={() => console.log("Accept")}
             onReject={() => console.log("Reject")}
             onExportCSV={() => console.log("Export CSV")}
-            onChangeStatus={(newStatus: string) => console.log("Changer status")}
+            onChangeStatus={() => console.log("Changer status")}
             selectedCount={0} />
     </div>
   );

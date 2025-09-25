@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Application {
+  id                String            @id
+  userId            String            @unique
+  status            ApplicationStatus @default(DRAFT)
+  firstName         String
+  lastName          String
+  dateOfBirth       DateTime?
+  phone             String?
+  city              String?
+  availability      String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime
+  currentStep       Int               @default(1)
+  essay             String?
+  personalStatement String?
+  quarter           String?
+  submittedAt       DateTime?
+  User              User              @relation(fields: [userId], references: [id])
+  Attachment        Attachment[]
+  Review            Review[]
+}
+
+model Attachment {
+  id            String      @id
+  applicationId String
+  fileName      String
+  fileType      String?
+  fileSize      Int?
+  url           String
+  uploadedAt    DateTime    @default(now())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime
+  Application   Application @relation(fields: [applicationId], references: [id])
+}
+
+model Review {
+  id            String      @id
+  applicationId String
+  reviewerId    String
+  score         Int?
+  comment       String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime
+  Application   Application @relation(fields: [applicationId], references: [id])
+  User          User        @relation(fields: [reviewerId], references: [id])
+}
+
+model User {
+  id          String       @id
+  email       String       @unique
+  password    String?
+  name        String?
+  role        Role         @default(APPLICANT)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime
+  Application Application?
+  Review      Review[]
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  IN_REVIEW
+  PRESELECTED
+  ACCEPTED
+  WAITLISTED
+  REJECTED
+}
+
+enum Role {
+  APPLICANT
+  REVIEWER
+  ADMIN
+}
